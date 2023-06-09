@@ -1,0 +1,64 @@
+<div id="loginform" class="p-5">
+    <div class="row">
+        <h1 class="col-12 text-center text-primary text-white">TRANSACCIONES</h1>
+    </div>
+    <div class="row mb-2 offset-2">
+        <div class="col-1 d-md-flex gap-5">
+            <!--(click)="addPasaje()"-->
+            <button class="btn-dark btn" >Volver</button>
+                <div class="col-12">
+                    <select class="form-select" aria-label="Default select example" name="monOri" id="idmonOri">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBO">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CNY">CNY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BTC">BTC</option>
+                        <option value="ARS">ARS</option>
+                    </select>
+                </div>
+                ><!--<div class="col-12">
+                    <select class="form-select" aria-label="Default select example" name="monDes" id="idmonDes" [(ngModel)]="monDes">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBO">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CNY">CNY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BTC">BTC</option>
+                        <option value="ARS">ARS</option>
+                    </select>
+                </div>-->
+            <button class="btn-dark btn" >Filtrar</button>
+            <button class="btn-dark btn" >Reiniciar</button>
+
+        </div>
+    </div>
+    <div class="row col-8 offset-2 text-center pd-5">
+        <table datatable class="table table-striped border border-1 bg-white  text-center"  >
+            <thead>
+                <tr>
+                    <th>Tipo Divisa</th>
+                    <th>Cant. Origen</th>
+                    <th>Cant. Destino</th>
+                    <th>Email</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td></td>
+                    <td><button class="btn btn-danger"  >BORRAR</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        </div>
+    <div>
+        
+    </div>
+
+
+</div>
