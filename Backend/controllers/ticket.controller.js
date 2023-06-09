@@ -1,13 +1,6 @@
 const Ticket = require('../models/ticket');
 const ticketCtrl = {}
 
-//devuelve todos los tickets
-ticketCtrl.getTickets = async (req, res) => {
-    //populate es poblar manda todo los datos de responsable
-    var tickets = await Ticket.find().populate("espectador");
-    res.json(tickets);
-}
-
 //crea un ticket
 ticketCtrl.createTicket = async (req, res) => {
     var ticket = new Ticket(req.body);
@@ -23,6 +16,13 @@ ticketCtrl.createTicket = async (req, res) => {
             'msg': 'Error procesando operacion.'
         })
     }
+}
+
+//devuelve todos los tickets
+ticketCtrl.getTickets = async (req, res) => {
+    //populate es poblar manda todo los datos de responsable
+    var tickets = await Ticket.find().populate("espectador");
+    res.json(tickets);
 }
 
 ticketCtrl.editTicket = async (req, res) => {
@@ -57,11 +57,21 @@ ticketCtrl.deleteTicket = async (req, res) => {
 }
 
 ticketCtrl.getEspectadorXcategoria = async (req, res) => {
-    const categoria = req.params.categoria;
+    try {
+        const categoria = req.params.categoria;
+        if (categoria != 'l' && categoria != 'e' && categoria != 'local' && categoria!= 'extranjero')
+            throw new Error('Categoria de Espectador invalida')
 
-    const tickets = await Ticket.find({ categoriaEspectador: categoria }).populate("espectador");
-    res.json(tickets);
+        const tickets = await Ticket.find({ categoriaEspectador: categoria }).populate("espectador");
+        res.json(tickets);
 
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            status: '0',
+            msg: 'Error al filtrar Espectador'
+        })
+    }
 }
 //si o si exportar el modulo
 module.exports = ticketCtrl;
