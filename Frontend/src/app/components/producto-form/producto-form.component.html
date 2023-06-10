@@ -1,1 +1,67 @@
-<p>producto-form works!</p>
+<div class="container-fluid">
+    <div class="d-flex flex-lg-row flex-column-reverse">
+        <div class="col-lg-6 col-12 form">
+            <form class="p-3">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Titulo:</label>
+                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.titulo" name="titulo" id="titulo" type="text" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="imagen" class="form-label">Imagen Url:</label>
+                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.imagen" name="imagen" id="imagen" type="text" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="form-label">Descripcion:</label>
+                    <textarea (change)="verificarValidez(libro)" [(ngModel)]="libro.descripcion" name="descripcion" id="descripcion" type="text" class="form-control" autocomplete="off"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cant" class="form-label">Cantidad: </label>
+                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.stock" name="cant" id="cant" type="number" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group pt-5">
+                    <button [disabled]="!valido" type="button" (click)="crearLibro(libro)" class="btn btn-primary w-100">Agregar Libro</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 col-12 card">
+            <div class="card-header">
+                <div *ngIf="libro.titulo; else sinTitulo">
+                    <h3>{{libro.titulo | titlecase}}</h3>
+                </div>
+                <ng-template #sinTitulo>
+                    <h3>Titulo del Libro</h3>
+                </ng-template>
+            </div>
+            <div class="card-body p-0">
+                <div class="d-flex justify-content-center" *ngIf="libro.imagen; else sinFoto">
+                    <img [src]="libro.imagen" alt="" class="card-img img-fluid">
+                </div>
+                <ng-template #sinFoto>
+                    <div class="d-flex justify-content-center">
+                        <img class="card-img img-fluid" src="../../../assets/img/img-default-libro.jpg" alt="">
+                    </div>
+                </ng-template>
+            </div>
+            <div class="card-footer">
+                <div class="m-1">
+                    <h5>Descripcion:</h5>
+                    <div *ngIf="libro.descripcion; else sinDescripcion">
+                        <p>&nbsp;&nbsp;{{libro.descripcion}}</p>
+                    </div>
+                    <ng-template #sinDescripcion>
+                        <p>&nbsp;&nbsp; Descripcion del Libro</p>
+                    </ng-template>
+                </div>
+                <div class="m-1">
+                    <h5>Stock diponible:</h5>
+                    <div *ngIf="libro.stock; else sinStock">
+                        <small>&nbsp;&nbsp; {{libro.stock}} unidades</small>
+                    </div>
+                    <ng-template #sinStock>
+                        <p class="fs-6">&nbsp;&nbsp; 0 unidades</p>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
