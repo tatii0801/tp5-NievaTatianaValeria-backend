@@ -8,28 +8,9 @@ import { Producto } from '../models/producto';
 })
 export class ProductoService {
 
-  urlBase : string = 'http://localhost:3000/api/';
-  
+  urlBase: string = 'http://localhost:3000/api/';
+
   constructor(private _httpCliente: HttpClient) { }
-
-  filterByDestacados(): Observable<any> {
-    const httpOptions = {
-      method: 'GET',
-      headers: new HttpHeaders({}),
-      params: new HttpParams({}),
-    };
-    return this._httpCliente.get(this.urlBase +  "producto/destacado", httpOptions);
-  }
-
-  getProductos(): Observable<any> {
-    let httpOption = {
-      headers: new HttpHeaders({
-
-      }),
-      params: new HttpParams()
-    }
-    return this._httpCliente.get(this.urlBase + "producto", httpOption);
-  }
 
   createProducto(producto: Producto): Observable<any> {
     let httpOption = {
@@ -51,5 +32,24 @@ export class ProductoService {
       params: new HttpParams()
     }
     return this._httpCliente.get(this.urlBase + "producto/" + id, httpOption);
+  }
+
+  getProductos(): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this._httpCliente.get(this.urlBase + "producto", httpOption);
+  }
+
+  getProductoDestacados(): Observable<any> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({}),
+      params: new HttpParams({}),
+    };
+    return this._httpCliente.get(this.urlBase + "producto/destacado", httpOptions);
   }
 }

@@ -25,7 +25,7 @@ export class ProductoComponent implements OnInit {
   }
 
   cargarProductos() {
-    this.productoService.filterByDestacados().subscribe(
+    this.productoService.getProductoDestacados().subscribe(
       result => {
         result.forEach((element: any) => {
           let unProducto: Producto = new Producto();
