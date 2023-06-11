@@ -1,61 +1,147 @@
-<div class="container-fluid">
+<div class="container">
+    <br>
     <div class="d-flex flex-lg-row flex-column-reverse">
         <div class="col-lg-6 col-12 form">
-            <form class="p-3">
+            <div class="letra3">
+                <h3>Formulario Para Dar de Alta Productos</h3>
+                <br>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="volverLista()">Volver Lista</button>
+
+            <form class="p-3" #productoForm="ngForm">
                 <div class="form-group">
-                    <label for="nombre" class="form-label">Titulo:</label>
-                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.titulo" name="titulo" id="titulo" type="text" class="form-control" autocomplete="off">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input id="nombre" type="text" class="form-control" autocomplete="off" [(ngModel)]="producto.nombre"
+                        name="nombre" required #nombre="ngModel">
+
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                        <div *ngIf="nombre.errors?.['required']">
+                            Nombre es requerido.
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="imagen" class="form-label">Imagen Url:</label>
-                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.imagen" name="imagen" id="imagen" type="text" class="form-control" autocomplete="off">
-                </div>
+
                 <div class="form-group">
                     <label for="descripcion" class="form-label">Descripcion:</label>
-                    <textarea (change)="verificarValidez(libro)" [(ngModel)]="libro.descripcion" name="descripcion" id="descripcion" type="text" class="form-control" autocomplete="off"></textarea>
+                    <textarea id="descripcion" type="text" class="form-control" autocomplete="off"
+                        [(ngModel)]="producto.descripcion" name="descripcion" required
+                        #descripcion="ngModel"></textarea>
+
+                    <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="descripcion.errors?.['required']">
+                            Descripcion es requerido.
+                        </div>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="cant" class="form-label">Cantidad: </label>
-                    <input (change)="verificarValidez(libro)" [(ngModel)]="libro.stock" name="cant" id="cant" type="number" class="form-control" autocomplete="off">
+                    <label for="imagen" class="form-label">Imagen Url:</label>
+                    <input id="imagen" type="text" class="form-control" autocomplete="off" [(ngModel)]="producto.imagen"
+                        name="imagen" required #imagen="ngModel">
+
+                    <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alert alert-danger">
+                        <div *ngIf="imagen.errors?.['required']">
+                            Imagen es requerido.
+                        </div>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="precio" class="form-label">Precio: </label>
+                    <input id="precio" type="number" class="form-control" autocomplete="off"
+                        [(ngModel)]="producto.precio" name="precio" required #precio="ngModel">
+
+                    <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+                        <div *ngIf="precio.errors?.['required']">
+                            Precio es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="stock" class="form-label">Stock: </label>
+                    <input id="stock" type="number" class="form-control" autocomplete="off" [(ngModel)]="producto.stock"
+                        name="stock" required #stock="ngModel">
+
+                    <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
+                        <div *ngIf="stock.errors?.['required']">
+                            Stock es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <!--Destacado-->
+                <div class="mb-3">
+                    <label for="destacado" class="form-label">Tipo: </label>
+                    <div class="form-check">
+                        <label class="form-check-label" for="destacado">Destacado</label>
+                        <input id="destacado" type="radio" class="form-check-input" [(ngModel)]="producto.destacado"
+                            name="destacado" value="true" required #destacado="ngModel">
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="iddestacado">No Destacado</label>
+                        <input id="destacado" type="radio" class="form-check-input" [(ngModel)]="producto.destacado"
+                            name="destacado" value="false" required #destacado="ngModel">
+                    </div>
+                    <div *ngIf="destacado.invalid && (destacado.dirty || destacado.touched)" class="alert alert-danger">
+                        <div *ngIf="destacado.errors?.['required']">
+                            Destacado es requerido.
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group pt-5">
-                    <button [disabled]="!valido" type="button" (click)="crearLibro(libro)" class="btn btn-primary w-100">Agregar Libro</button>
+                    <button type="button" [disabled]="productoForm.invalid" (click)="guardarProducto()"
+                        class="btn btn-success w-50">Agregar Producto</button>
+                    <button type="submit" (click)="volverLista()"
+                        class="btn btn-primary w-50">Volver Lista</button>
+
                 </div>
             </form>
         </div>
         <div class="col-lg-6 col-12 card">
             <div class="card-header">
-                <div *ngIf="libro.titulo; else sinTitulo">
-                    <h3>{{libro.titulo | titlecase}}</h3>
+                <div *ngIf="producto.nombre; else sinNombre">
+                    <h3>{{producto.nombre | titlecase}}</h3>
                 </div>
-                <ng-template #sinTitulo>
-                    <h3>Titulo del Libro</h3>
+                <ng-template #sinNombre>
+                    <h3>Nombre del Producto</h3>
                 </ng-template>
             </div>
             <div class="card-body p-0">
-                <div class="d-flex justify-content-center" *ngIf="libro.imagen; else sinFoto">
-                    <img [src]="libro.imagen" alt="" class="card-img img-fluid">
+                <div class="d-flex justify-content-center" *ngIf="producto.imagen; else sinFoto">
+                    <img [src]="producto.imagen" alt="" class="card-img img-fluid">
                 </div>
                 <ng-template #sinFoto>
                     <div class="d-flex justify-content-center">
-                        <img class="card-img img-fluid" src="../../../assets/img/img-default-libro.jpg" alt="">
+                        <img class="card-img img-fluid" src="../../../assets/imagen/logo-no-disponible.jpg" alt="">
                     </div>
                 </ng-template>
             </div>
             <div class="card-footer">
                 <div class="m-1">
                     <h5>Descripcion:</h5>
-                    <div *ngIf="libro.descripcion; else sinDescripcion">
-                        <p>&nbsp;&nbsp;{{libro.descripcion}}</p>
+                    <div *ngIf="producto.descripcion; else sinDescripcion">
+                        <p>&nbsp;&nbsp;{{producto.descripcion}}</p>
                     </div>
                     <ng-template #sinDescripcion>
-                        <p>&nbsp;&nbsp; Descripcion del Libro</p>
+                        <p>&nbsp;&nbsp; Descripcion del Producto</p>
                     </ng-template>
                 </div>
                 <div class="m-1">
-                    <h5>Stock diponible:</h5>
-                    <div *ngIf="libro.stock; else sinStock">
-                        <small>&nbsp;&nbsp; {{libro.stock}} unidades</small>
+                    <h5>Precio del Producto:</h5>
+                    <div *ngIf="producto.precio; else sinPrecio">
+                        <p>&nbsp;&nbsp;$ {{producto.precio}} pesos</p>
+                    </div>
+                    <ng-template #sinPrecio>
+                        <p class="fs-6">&nbsp;&nbsp;$ 0 pesos</p>
+                    </ng-template>
+                </div>
+                <div class="m-1">
+                    <h5>Productos diponible:</h5>
+                    <div *ngIf="producto.stock; else sinStock">
+                        <p>&nbsp;&nbsp; {{producto.stock}} unidades</p>
                     </div>
                     <ng-template #sinStock>
                         <p class="fs-6">&nbsp;&nbsp; 0 unidades</p>
@@ -65,3 +151,4 @@
         </div>
     </div>
 </div>
+<br>

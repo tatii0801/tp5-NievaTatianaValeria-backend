@@ -1,0 +1,47 @@
+.contenedor-tabla {
+	text-align: center;
+	margin-left: 1rem;
+	margin-right: 0rem;
+	font-family: Arial Rounded MT Bold, serif, sans-serif;
+	margin-bottom: 1rem;
+}
+
+.formulario {
+	background-color: #5C6BC0;
+	color: #ffffff;
+	font-family: Arial Rounded MT Bold, serif, sans-serif;
+	margin-bottom: 1rem;
+	font-weight: bold;
+}
+.letras3{
+	width: 100%;
+	margin-left: 1rem;
+	text-align: center;
+	font-weight: bold;
+}
+
+.letras3 h3 {
+	background-color: #232f72;
+	font-family: Arial Rounded MT Bold, serif, sans-serif;
+	padding: 1rem;
+	text-align: center;
+	font-weight: bold;
+	display: 7;
+	color: white;
+}
+
+.letra3 {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+}
+
+.letra3 h3 {
+	background-color: #232f72;
+	font-family: Arial Rounded MT Bold, serif, sans-serif;
+	padding: 1rem;
+	text-align: center;
+	font-weight: bold;
+	display: 7;
+	color: white;
+}

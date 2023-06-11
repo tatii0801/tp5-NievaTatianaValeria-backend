@@ -10,9 +10,11 @@ productoCtrl.createProducto = async (req, res) => {
             'msg': 'Producto guardado.'
         })
     } catch (error) {
+        console.log(error)
         res.status(400).json({
             'status': '0',
             'msg': 'Error procesando operacion.'
+            
         })
     }
 }
