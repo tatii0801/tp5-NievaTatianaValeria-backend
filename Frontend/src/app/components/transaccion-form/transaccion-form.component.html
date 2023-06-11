@@ -58,22 +58,22 @@
                     </div>
                     <form class="row g-4">
                         <div class="d-grid gap-2 col-md-10 mx-auto">
-                            <label for="monedaOrigen" class="form-label">Moneda Origen:</label>
-                            <input placeholder="Ingrese cantidad a convertir" id="monedaOrigen" type="number"
-                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.monedaOrigen"
-                                name="monedaOrigen" required #monedaOrigen="ngModel">
+                            <label for="cantidadOrigen" class="form-label">Cantidad Origen:</label>
+                            <input placeholder="Ingrese cantidad a convertir" id="cantidadOrigen" type="number"
+                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.cantidadOrigen"
+                                name="cantidadOrigen" required #cantidadOrigen="ngModel">
 
-                            <div *ngIf="monedaOrigen.invalid && (monedaOrigen.dirty || monedaOrigen.touched)"
+                            <div *ngIf="cantidadOrigen.invalid && (cantidadOrigen.dirty || cantidadOrigen.touched)"
                                 class="alert alert-danger">
-                                <div *ngIf="monedaOrigen.errors?.['required']">
-                                    Moneda Origen es requerido.
+                                <div *ngIf="cantidadOrigen.errors?.['required']">
+                                    Cantidad Origen es requerido.
                                 </div>
                             </div>
                         </div>
                         <div class="d-grid gap-2 col-md-10 mx-auto">
-                            <label for="cantidadOrigen" class="form-label">cantidadOrigen:</label>
-                            <select  class="form-select"  id="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen"
-                                name="cantidadOrigen">
+                            <label for="monedaOrigen" class="form-label">Moneda Origen:</label>
+                            <select class="form-select" id="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen"
+                                name="monedaOrigen">
                                 <option value="Seleccione" selected>Seleccione: </option>
                                 <option value="USD">USD Dolares EEUU</option>
                                 <option value="EUR">EUR Euro</option>
@@ -87,8 +87,9 @@
                             </select>
                         </div>
                         <div class="d-grid gap-2 col-md-10 mx-auto">
-                            <label for="a" class="form-label">A: </label>
-                            <select class="form-select" id="a" value="a" placeholder="Ingrese A que Pais !!">
+                            <label for="monedaDestino" class="form-label">Moneda Destino: </label>
+                            <select class="form-select" id="monedaDestino" [(ngModel)]="transaccion.monedaDestino"
+                                name="monedaDestino">
                                 <option value="Seleccione" selected>Seleccione: </option>
                                 <option value="USD">USD Dolares EEUU</option>
                                 <option value="EUR">EUR Euro</option>
@@ -100,6 +101,34 @@
                                 <option value="BTC">BTC Bitcoin</option>
                                 <option value="ARS">ARS Peso argentino</option>
                             </select>
+                        </div>
+
+                        <div class="d-grid gap-2 col-md-10 mx-auto">
+                            <label for="emailCliente" class="form-label">Email Cliente:</label>
+                            <input placeholder="Ingrese cantidad a convertir" id="emailCliente" type="email"
+                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.emailCliente"
+                                name="emailCliente" required #emailCliente="ngModel">
+
+                            <div *ngIf="emailCliente.invalid && (emailCliente.dirty || emailCliente.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="emailCliente.errors?.['required']">
+                                    Email Cliente: es requerido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 col-md-10 mx-auto">
+                            <label for="tasaConversion" class="form-label">Tasa de Conversion:</label>
+                            <input placeholder="Ingrese tasa de conversion" id="tasaConversion" type="number"
+                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.tasaConversion"
+                                name="tasaConversion" required #tasaConversion="ngModel">
+
+                            <div *ngIf="tasaConversion.invalid && (tasaConversion.dirty || tasaConversion.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="tasaConversion.errors?.['required']">
+                                    Tasa de Conversion: es requerido.
+                                </div>
+                            </div>
                         </div>
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="Total" class="form-label">Total: </label>
