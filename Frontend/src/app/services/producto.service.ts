@@ -8,27 +8,48 @@ import { Producto } from '../models/producto';
 })
 export class ProductoService {
 
-  baseUrl = 'http://localhost:3000/api/producto/';
+  urlBase : string = 'http://localhost:3000/api/';
   
-  constructor(private http: HttpClient) { }
+  constructor(private _httpCliente: HttpClient) { }
 
-  public filterByDestacados(): Observable<any> {
+  filterByDestacados(): Observable<any> {
     const httpOptions = {
       method: 'GET',
       headers: new HttpHeaders({}),
       params: new HttpParams({}),
     };
-    return this.http.get(this.baseUrl, httpOptions);
+    return this._httpCliente.get(this.urlBase +  "producto/destacado", httpOptions);
   }
 
-  public createProducto(producto: Producto): Observable<any> {
-    const httpOptions = {
-      method: 'POST',
+  getProductos(): Observable<any> {
+    let httpOption = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+
       }),
-    };
-    let body = JSON.stringify(producto);
-    return this.http.post(this.baseUrl, body, httpOptions);
+      params: new HttpParams()
+    }
+    return this._httpCliente.get(this.urlBase + "producto", httpOption);
+  }
+
+  createProducto(producto: Producto): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+        "Content-type": "application/json"
+      }),
+      //params: new HttpParams()
+    }
+    //inicializamos el body tipo JSON
+    let body = JSON.stringify(producto)
+    return this._httpCliente.post(this.urlBase + "producto", body, httpOption);
+  }
+
+  getProducto(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this._httpCliente.get(this.urlBase + "producto/" + id, httpOption);
   }
 }
