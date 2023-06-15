@@ -36,7 +36,7 @@ export class ProductoComponent implements OnInit {
         console.log(result);
       },
       error => {
-
+        console.log(error);
       }
     )
   }

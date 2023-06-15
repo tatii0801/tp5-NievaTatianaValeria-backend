@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class TransaccionService {
 
-  urlBase : string = 'http://localhost:3000/api/';
-  
+  urlBase: string = 'http://localhost:3000/api/';
+
   constructor(private _httpCliente: HttpClient) { }
 
   createTransaccion(transaccion: Transaccion): Observable<any> {
@@ -24,6 +24,16 @@ export class TransaccionService {
     return this._httpCliente.post(this.urlBase + "transaccion", body, httpOption);
   }
 
+  getTransaccion(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this._httpCliente.get(this.urlBase + "transaccion/" + id, httpOption);
+  }
+
   getTransacciones(): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders({
@@ -32,5 +42,35 @@ export class TransaccionService {
       params: new HttpParams()
     }
     return this._httpCliente.get(this.urlBase + "transaccion", httpOption);
+  }
+
+  getTransaccionesFiltroMonedas(monedaOrigen: string, monedaDestino: string): Observable<any> {
+    const httpOptions = {
+
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+        .append('monedaOrigen', monedaOrigen)
+        .append('monedaDestino', monedaDestino),
+    };
+    return this._httpCliente.get(this.urlBase + 'transaccion/filtro/' + monedaOrigen + '/' + monedaDestino, httpOptions);
+  }
+
+  conversionDivisa(monedaOrigen: string, monedaDestino: string, cantidad: number): Observable<any> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        //api https://rapidapi.com/neutrinoapi/api/convert-1
+        'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': 'a8677b95eamshec9fdb7406c63e4p1a7fbdjsn84146c1c757b',
+		'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com'
+      }),
+    }
+    const body = new HttpParams()
+      .set('from-value', cantidad)
+      .set('from-type', monedaOrigen)
+      .set('to-type', monedaDestino);
+
+    return this._httpCliente.post("https://community-neutrino-currency-conversion.p.rapidapi.com/convert", body, httpOption);
   }
 }

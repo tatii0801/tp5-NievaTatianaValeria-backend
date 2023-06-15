@@ -11,7 +11,7 @@
             <form class="p-3" #productoForm="ngForm">
                 <div class="form-group">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input id="nombre" type="text" class="form-control" autocomplete="off" [(ngModel)]="producto.nombre"
+                    <input id="nombre" type="text" class="form-control" [(ngModel)]="producto.nombre"
                         name="nombre" required #nombre="ngModel">
 
                     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label for="descripcion" class="form-label">Descripcion:</label>
-                    <textarea id="descripcion" type="text" class="form-control" autocomplete="off"
+                    <textarea id="descripcion" type="text" class="form-control"
                         [(ngModel)]="producto.descripcion" name="descripcion" required
                         #descripcion="ngModel"></textarea>
 
@@ -37,7 +37,7 @@
 
                 <div class="form-group">
                     <label for="imagen" class="form-label">Imagen Url:</label>
-                    <input id="imagen" type="text" class="form-control" autocomplete="off" [(ngModel)]="producto.imagen"
+                    <input id="imagen" type="text" class="form-control" [(ngModel)]="producto.imagen"
                         name="imagen" required #imagen="ngModel">
 
                     <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alert alert-danger">
@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                     <label for="precio" class="form-label">Precio: </label>
-                    <input id="precio" type="number" class="form-control" autocomplete="off"
+                    <input id="precio" type="number" class="form-control"
                         [(ngModel)]="producto.precio" name="precio" required #precio="ngModel">
 
                     <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
@@ -61,7 +61,7 @@
 
                 <div class="form-group">
                     <label for="stock" class="form-label">Stock: </label>
-                    <input id="stock" type="number" class="form-control" autocomplete="off" [(ngModel)]="producto.stock"
+                    <input id="stock" type="number" class="form-control" [(ngModel)]="producto.stock"
                         name="stock" required #stock="ngModel">
 
                     <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">

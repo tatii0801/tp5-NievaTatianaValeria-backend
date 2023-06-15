@@ -1,9 +1,9 @@
 export class Transaccion {
     _id!: string;
     monedaOrigen!: string;
-    cantidadOrigen!: Number;
+    cantidadOrigen!: number;
     monedaDestino!: string;
-    cantidadDestino!:Number;
+    cantidadDestino!:number;
     emailCliente!: string;
-    tasaConversion!: Number;    // Dato que ingresa el cliente, y se ha utilizado para calcular cantidadDestino
+    tasaConversion!: number;    // Dato que ingresa el cliente, y se ha utilizado para calcular cantidadDestino
 }

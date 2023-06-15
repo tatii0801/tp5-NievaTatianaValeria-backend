@@ -56,12 +56,12 @@
                         <h3>Conversor De Divisas</h3>
                         <br>
                     </div>
-                    <form class="row g-4">
+                    <form class="row g-4" #transaccionForm="ngForm">
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="cantidadOrigen" class="form-label">Cantidad Origen:</label>
                             <input placeholder="Ingrese cantidad a convertir" id="cantidadOrigen" type="number"
-                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.cantidadOrigen"
-                                name="cantidadOrigen" required #cantidadOrigen="ngModel">
+                                class="form-control" [(ngModel)]="transaccion.cantidadOrigen" name="cantidadOrigen"
+                                required #cantidadOrigen="ngModel">
 
                             <div *ngIf="cantidadOrigen.invalid && (cantidadOrigen.dirty || cantidadOrigen.touched)"
                                 class="alert alert-danger">
@@ -105,9 +105,9 @@
 
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="emailCliente" class="form-label">Email Cliente:</label>
-                            <input placeholder="Ingrese cantidad a convertir" id="emailCliente" type="email"
-                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.emailCliente"
-                                name="emailCliente" required #emailCliente="ngModel">
+                            <input placeholder="Ingrese email" id="emailCliente" type="email" class="form-control"
+                                [(ngModel)]="transaccion.emailCliente" name="emailCliente" required
+                                #emailCliente="ngModel">
 
                             <div *ngIf="emailCliente.invalid && (emailCliente.dirty || emailCliente.touched)"
                                 class="alert alert-danger">
@@ -120,8 +120,8 @@
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="tasaConversion" class="form-label">Tasa de Conversion:</label>
                             <input placeholder="Ingrese tasa de conversion" id="tasaConversion" type="number"
-                                class="form-control" autocomplete="off" [(ngModel)]="transaccion.tasaConversion"
-                                name="tasaConversion" required #tasaConversion="ngModel">
+                                class="form-control" [(ngModel)]="transaccion.tasaConversion" name="tasaConversion"
+                                required #tasaConversion="ngModel">
 
                             <div *ngIf="tasaConversion.invalid && (tasaConversion.dirty || tasaConversion.touched)"
                                 class="alert alert-danger">
@@ -131,13 +131,20 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 col-md-10 mx-auto">
-                            <label for="Total" class="form-label">Total: </label>
-                            <input class="form-control">
+                            <label for="cantidadDestino" class="form-label">Conversion Cantidad Destino: </label>
+                            <input class="form-control" [(ngModel)]="transaccion.cantidadDestino" name="cantidadDestino" disabled>
                         </div>
-                        <div class="d-grid gap-2 col-10 mx-auto">
-                            <button class="btn btn-warning">Convertir --- >
+
+                        <div class="form-group pt-5">
+                            <button type="button" [disabled]="transaccionForm.invalid"
+                                (click)="obtenerCotizacionDivisa()" class="btn btn-warning w-50">Convertir --- >
                             </button>
-                            <br>
+                            <button type="button"
+                                (click)="volver()" class="btn btn-success w-50">Volver a la Lista
+                            </button>
+                            <button type="button" [disabled]="transaccionForm.invalid"
+                                (click)="guardarTransaccion()" class="btn btn-danger text-white w-100">Guardar Transaccion
+                            </button>
                         </div>
                     </form>
                 </div>

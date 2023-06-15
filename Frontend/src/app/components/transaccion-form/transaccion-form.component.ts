@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'console';
 import { Transaccion } from 'src/app/models/transaccion';
+import { TransaccionService } from 'src/app/services/transaccion.service';
 
 @Component({
   selector: 'app-transaccion-form',
@@ -9,7 +12,13 @@ import { Transaccion } from 'src/app/models/transaccion';
 export class TransaccionFormComponent implements OnInit {
   divisass: Array<any>;
   transaccion!: Transaccion;
-  constructor() {
+  //cantidadDestino!: number;
+  accion: string = "new" // accion tendra los valores de new o update
+
+
+  constructor(private transaccionService: TransaccionService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
     this.divisass = [
 
       //tabla 1
@@ -106,10 +115,62 @@ export class TransaccionFormComponent implements OnInit {
       },
     ]
 
-    this.transaccion=new Transaccion();
+    this.transaccion = new Transaccion();
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id'] == "0") {
+        this.accion = "new";
+      } else {
+        this.accion = "update";
+        this.cargarTrasaccion(params['id']);
+      }
+    });
+  }
+
+  cargarTrasaccion(id: string) {
+    this.transaccionService.getTransaccion(id).subscribe(
+      result => {
+        Object.assign(this.transaccion, result);
+        //añadir los valores en una lista despleglable
+        //this.sector.responsable = this.agentes.find(item => (item._id == this.sector.responsable._id))!;
+        console.log(result);
+      },
+      error => {
+
+      }
+    )
+  }
+
+  obtenerCotizacionDivisa() {
+    this.transaccionService.conversionDivisa(this.transaccion.monedaOrigen, this.transaccion.monedaDestino, this.transaccion.cantidadOrigen).subscribe(
+      result => {
+        this.transaccion.cantidadDestino = result.result;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  guardarTransaccion() {
+    this.transaccionService.createTransaccion(this.transaccion).subscribe(
+      (result) => {
+        if (result.status == 1) {
+          console.log(result.msg);
+          this.router.navigate(["transaccion"]);
+        }
+      },
+      error => {
+        alert(error.msg);
+      }
+    )
+  }
+
+  volver(){
+    this.router.navigate(["transaccion"]);
   }
 
 }

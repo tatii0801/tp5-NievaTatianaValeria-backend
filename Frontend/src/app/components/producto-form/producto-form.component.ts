@@ -59,7 +59,7 @@ export class ProductoFormComponent implements OnInit {
   }
 
   volverLista() {
-    this.router.navigate(["producto-form"])
+    this.router.navigate(["producto"])
 
   }
 }

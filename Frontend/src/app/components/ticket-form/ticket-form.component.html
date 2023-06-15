@@ -1,1 +1,53 @@
-<p>ticket-form works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <br>
+            <h3>Venta de Tickets</h3>
+
+            <!--<div>Datos en el formulario: {{ticketForm.value | json}}</div>
+            <div>Estado del Fromulario:{{ticketForm.status}} {{ticketForm.invalid}}</div>
+
+            <div>Estado de la caja de dni: {{dni.status}}</div>
+            <div>Errores en la caja dni: {{dni.errors | json}}</div>-->
+
+            <form #ticketForm="ngForm">
+                <div class="mb-3">
+                    <label for="precioTicket" class="form-label">Precio</label>
+                    <input type="number" class="form-control form-control-sm" id="precioTicket"
+                        [(ngModel)]="ticket.precioTicket" name="precioTicket" required #precioTicket="ngModel">
+
+                    <div *ngIf="precioTicket.invalid && (precioTicket.dirty || precioTicket.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="precioTicket.errors?.['required']">
+                            Precio Ticket es requerido.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="categoriaEspectador" class="form-label">Tipo de Espectador</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="ticket.categoriaEspectador"
+                        name="categoriaEspectador" required #categoriaEspectador="ngModel" > <!--(ngModelChange)="calcularDescuanto()"-->
+                        <option selected>Seleccione que categoria requiere</option>
+                        <option value="Local">Local</option>
+                        <option value="Extranjero">Extranjero</option>
+                    </select>
+
+                    <div *ngIf="categoriaEspectador.invalid && (categoriaEspectador.dirty || categoriaEspectador.touched)" class="alert alert-danger">
+                        <div *ngIf="categoriaEspectador.errors?.['required']">
+                            Seleccione una categoria espectador es requerido.
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-primary"
+                    [disabled]="ticketForm.invalid">Registrar</button>
+                <button *ngIf="accion=='update'" type="submit" (click)="actualizarTicket()"
+                    class="btn btn-warning">Actualizar</button>
+                <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+                <br><br><br><br>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
