@@ -1,0 +1,39 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <h3 class="col-12 text-center text-success text-decoration-underline">Listado De Productos Destacados</h3>
+    </div>
+    <button type="button" (click)="agregarTransaccion()" class="btn btn-success">Agregar Transaccion</button>
+
+    <div class="table-responsive">
+        <table class="table table table-bordered table-light table-striped">
+            <thead>
+                <!--monedaOrigen!: string;
+    cantidadOrigen!: number;
+    monedaDestino!: string;
+    cantidadDestino!:number;
+    emailCliente!: string;
+    tasaConversion!: number;-->
+                <tr>
+                    <th scope="col">ID Transaccion</th>
+                    <th scope="col">Moneda Origen</th>
+                    <th scope="col">Cantidad Origen</th>
+                    <th scope="col">Moneda Destino</th>
+                    <th scope="col">Cantidad Destino</th>
+                    <th scope="col">Email Cliente</th>
+                    <th scope="col">Tasa Conversion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let div of transaccionss">
+                    <th scope="row">{{ div._id }}</th>
+                    <td>{{ div.monedaOrigen}}</td>
+                    <td>{{ div.cantidadOrigen | currency}} </td>
+                    <td>{{ div.monedaDestino}}</td>
+                    <td>{{ div.cantidadDestino | currency}} </td>
+                    <td>{{ div.emailCliente}}</td>
+                    <td>{{ div.tasaConversion | percent}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

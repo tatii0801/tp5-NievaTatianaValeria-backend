@@ -46,9 +46,10 @@ export class ProductoService {
 
   getProductoDestacados(): Observable<any> {
     const httpOptions = {
-      method: 'GET',
-      headers: new HttpHeaders({}),
-      params: new HttpParams({}),
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
     };
     return this._httpCliente.get(this.urlBase + "producto/destacado", httpOptions);
   }

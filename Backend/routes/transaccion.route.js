@@ -10,7 +10,7 @@ router.post('/', transaccionCtrl.createTransaccion);
 //trae los espectador de la bd
 router.get('/', transaccionCtrl.getTransacciones);
 router.get('/filtro/:email', transaccionCtrl.getTransaccionesFiltroEmail);
-router.get('/filtro/:monOri/:monDes', transaccionCtrl.getTransaccionesFiltroMonedas);
+router.get('/filtro/:monedaOrigen/:monedaDestino', transaccionCtrl.getTransaccionesFiltroMonedas);
 
 //cuando se hacer un filtro sin determinar el nombre tengo que llamarlo al momento de hacer el controllers
 
