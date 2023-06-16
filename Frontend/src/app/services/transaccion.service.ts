@@ -62,7 +62,7 @@ export class TransaccionService {
       headers: new HttpHeaders({
         //api https://rapidapi.com/neutrinoapi/api/convert-1
         'content-type': 'application/x-www-form-urlencoded',
-        'X-RapidAPI-Key': 'ec9f588861msh2fbfbc830040261p184312jsn132ded6cedc9',
+        //'X-RapidAPI-Key': 'ec9f588861msh2fbfbc830040261p184312jsn132ded6cedc9',
         'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com'
       }),
     }
