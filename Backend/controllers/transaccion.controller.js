@@ -36,7 +36,7 @@ transaccionCtrl.getTransaccionesFiltroEmail = async (req, res) => {
         console.log(error)
         res.status(400).json({
             status: '0',
-            msg: 'Error al filtrar transacciones por divisas',
+            msg: 'Error al filtrar transacciones por Email',
 
         })
     }
@@ -55,7 +55,7 @@ transaccionCtrl.getTransaccionesFiltroMonedas = async (req, res) => {
         console.log(error)
         res.status(400).json({
             status: '0',
-            msg: 'Error al filtrar transacciones por divisas',
+            msg: 'Error al filtrar transacciones por Monedas',
 
         })
     }

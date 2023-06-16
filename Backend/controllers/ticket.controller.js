@@ -25,6 +25,11 @@ ticketCtrl.getTickets = async (req, res) => {
     res.json(tickets);
 }
 
+ticketCtrl.getTicket = async (req, res) => {
+    const ticket = await Ticket.findById(req.params.id).populate("espectador");
+    res.json(ticket);
+}
+
 ticketCtrl.editTicket = async (req, res) => {
     const editTicke = new Ticket(req.body);
     try {

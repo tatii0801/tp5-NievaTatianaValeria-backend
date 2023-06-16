@@ -73,8 +73,8 @@
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="monedaOrigen" class="form-label">Moneda Origen:</label>
                             <select class="form-select" id="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen"
-                                name="monedaOrigen">
-                                <option value="Seleccione" selected>Seleccione: </option>
+                                name="monedaOrigen" required #monedaOrigen="ngModel" placeholder="Seleccione">
+                                <option selected>Seleccione: </option>
                                 <option value="USD">USD Dolares EEUU</option>
                                 <option value="EUR">EUR Euro</option>
                                 <option value="GBP">GBP Libra Esterlina</option>
@@ -85,12 +85,17 @@
                                 <option value="BTC">BTC Bitcoin</option>
                                 <option value="ARS">ARS Peso argentino</option>
                             </select>
+                            <div *ngIf="monedaOrigen.invalid && (monedaOrigen.dirty || monedaOrigen.touched)" class="alert alert-danger">
+                                <div *ngIf="monedaOrigen.errors?.['required']">
+                                    Seleccione una categoria Modena Origen es requerido.
+                                </div>
+                            </div>
                         </div>
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="monedaDestino" class="form-label">Moneda Destino: </label>
                             <select class="form-select" id="monedaDestino" [(ngModel)]="transaccion.monedaDestino"
-                                name="monedaDestino">
-                                <option value="Seleccione" selected>Seleccione: </option>
+                                name="monedaDestino" required #monedaDestino="ngModel">
+                                <option selected>Seleccione: </option>
                                 <option value="USD">USD Dolares EEUU</option>
                                 <option value="EUR">EUR Euro</option>
                                 <option value="GBP">GBP Libra Esterlina</option>
@@ -101,6 +106,11 @@
                                 <option value="BTC">BTC Bitcoin</option>
                                 <option value="ARS">ARS Peso argentino</option>
                             </select>
+                            <div *ngIf="monedaDestino.invalid && (monedaDestino.dirty || monedaDestino.touched)" class="alert alert-danger">
+                                <div *ngIf="monedaDestino.errors?.['required']">
+                                    Seleccione una categoria Modena Destino es requerido.
+                                </div>
+                            </div>
                         </div>
 
                         <div class="d-grid gap-2 col-md-10 mx-auto">
@@ -133,6 +143,10 @@
                         <div class="d-grid gap-2 col-md-10 mx-auto">
                             <label for="cantidadDestino" class="form-label">Conversion Cantidad Destino: </label>
                             <input class="form-control" [(ngModel)]="transaccion.cantidadDestino" name="cantidadDestino" disabled>
+                        </div>
+                        <div class="d-grid gap-2 col-md-10 mx-auto">
+                            <label for="cantidadDestino" class="form-label">Conversion Tasa: </label>
+                            <input class="form-control" placeholder="{{tasaConver}}" disabled>
                         </div>
 
                         <div class="form-group pt-5">

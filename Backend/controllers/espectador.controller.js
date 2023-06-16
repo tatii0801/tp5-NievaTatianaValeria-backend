@@ -8,7 +8,7 @@ espectadorCtrl.createEspectador = async (req, res) => {
         await espectador.save();
         res.status(200).json({
             'status': '1',
-            'msg': 'Sector guardado.'
+            'msg': 'Espectador guardado.'
         })
     } catch (error) {
         res.status(400).json({
@@ -18,7 +18,7 @@ espectadorCtrl.createEspectador = async (req, res) => {
     }
 }
 
-//devuelve todos los agentes
+//devuelve todos los Espectadores
 espectadorCtrl.getEspectadores = async (req, res) => {
     //populate es poblar manda todo los datos de responsable
     var espectadores = await Espectador.find();

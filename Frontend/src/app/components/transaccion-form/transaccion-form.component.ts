@@ -13,6 +13,7 @@ export class TransaccionFormComponent implements OnInit {
   divisass: Array<any>;
   transaccion!: Transaccion;
   //cantidadDestino!: number;
+  tasaConver!: string;
   accion: string = "new" // accion tendra los valores de new o update
 
 
@@ -116,6 +117,7 @@ export class TransaccionFormComponent implements OnInit {
     ]
 
     this.transaccion = new Transaccion();
+    this.transaccion.tasaConversion != 1;
   }
 
   ngOnInit(): void {
@@ -153,6 +155,17 @@ export class TransaccionFormComponent implements OnInit {
         console.log(error);
       }
     )
+
+    this.transaccionService.conversionDivisa(this.transaccion.monedaOrigen, this.transaccion.monedaDestino, this.transaccion.cantidadOrigen).subscribe(
+      result => {
+        this.transaccion.tasaConversion = result.result;
+        this.tasaConver = this.transaccion.cantidadOrigen + "" + this.transaccion.monedaOrigen + " = " + this.transaccion.tasaConversion + "" + this.transaccion.monedaDestino;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   guardarTransaccion() {
@@ -169,7 +182,7 @@ export class TransaccionFormComponent implements OnInit {
     )
   }
 
-  volver(){
+  volver() {
     this.router.navigate(["transaccion"]);
   }
 

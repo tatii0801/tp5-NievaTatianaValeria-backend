@@ -1,4 +1,76 @@
-<p>espectador-form works!</p>
-<p>espectador-form works!</p>
-<p>espectador-form works!</p>
-<p>espectador-form works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <br>
+            <h3>Venta de Tickets</h3>
+
+            <!--<div>Datos en el formulario: {{ticketForm.value | json}}</div>
+            <div>Estado del Fromulario:{{ticketForm.status}} {{ticketForm.invalid}}</div>
+
+            <div>Estado de la caja de dni: {{dni.status}}</div>
+            <div>Errores en la caja dni: {{dni.errors | json}}</div>-->
+
+            <form #espectadorForm="ngForm">
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control form-control-sm" id="apellido"
+                        [(ngModel)]="espectador.apellido" name="apellido" required #apellido="ngModel">
+
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="apellido.errors?.['required']">
+                            Apellido es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control form-control-sm" id="nombre"
+                        [(ngModel)]="espectador.nombre" name="nombre" required #nombre="ngModel">
+
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="nombre.errors?.['required']">
+                            Nombre es requerido.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Dni</label>
+                    <input type="text" class="form-control form-control-sm" id="dni"
+                        [(ngModel)]="espectador.dni" name="dni" required #dni="ngModel">
+
+                    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="dni.errors?.['required']">
+                            Dni es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-sm" id="email"
+                        [(ngModel)]="espectador.email" name="email" required #email="ngModel">
+
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="email.errors?.['required']">
+                            Email es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <button type="submit" (click)="guardarEspectador()" class="btn btn-primary"
+                    [disabled]="espectadorForm.invalid">Registrar</button>
+                <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+                <br><br><br><br>
+            </form>
+        </div>
+    </div>
+</div>
+<br>

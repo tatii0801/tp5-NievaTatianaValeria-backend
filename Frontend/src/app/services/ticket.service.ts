@@ -22,6 +22,16 @@ export class TicketService {
     return this._httpCliente.get(this.urlBase + "ticket", httpOption);
   }
 
+  getTicket(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this._httpCliente.get(this.urlBase + "ticket/" + id, httpOption);
+  }
+
   deleteTicket(id: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders({

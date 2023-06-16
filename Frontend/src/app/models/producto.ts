@@ -3,7 +3,7 @@ export class Producto {
     nombre!: string;
     descripcion!: string;
     imagen!: String; //url de una imagen para mostrar
-    precio!: Number;
-    stock!: Number;
+    precio!: number;
+    stock!: number;
     destacado!: Boolean; // solo algunos productos son destacadosF
 }

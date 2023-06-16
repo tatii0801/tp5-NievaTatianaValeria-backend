@@ -9,6 +9,7 @@ const router = express.Router();
 router.post('/', ticketCtrl.createTicket);
 //trae los espectador de la bd
 router.get('/', ticketCtrl.getTickets);
+router.get('/:id', ticketCtrl.getTicket);
 router.delete('/:id', ticketCtrl.deleteTicket);
 router.put('/:id', ticketCtrl.editTicket);
 router.get('/filtro/:categoria', ticketCtrl.getEspectadorXcategoria);

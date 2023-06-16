@@ -11,8 +11,8 @@
             <form class="p-3" #productoForm="ngForm">
                 <div class="form-group">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input id="nombre" type="text" class="form-control" [(ngModel)]="producto.nombre"
-                        name="nombre" required #nombre="ngModel">
+                    <input id="nombre" type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre"
+                        required #nombre="ngModel">
 
                     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
                         <div *ngIf="nombre.errors?.['required']">
@@ -23,9 +23,8 @@
 
                 <div class="form-group">
                     <label for="descripcion" class="form-label">Descripcion:</label>
-                    <textarea id="descripcion" type="text" class="form-control"
-                        [(ngModel)]="producto.descripcion" name="descripcion" required
-                        #descripcion="ngModel"></textarea>
+                    <textarea id="descripcion" type="text" class="form-control" [(ngModel)]="producto.descripcion"
+                        name="descripcion" required #descripcion="ngModel"></textarea>
 
                     <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
                         class="alert alert-danger">
@@ -37,8 +36,8 @@
 
                 <div class="form-group">
                     <label for="imagen" class="form-label">Imagen Url:</label>
-                    <input id="imagen" type="text" class="form-control" [(ngModel)]="producto.imagen"
-                        name="imagen" required #imagen="ngModel">
+                    <input id="imagen" type="text" class="form-control" [(ngModel)]="producto.imagen" name="imagen"
+                        required #imagen="ngModel">
 
                     <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alert alert-danger">
                         <div *ngIf="imagen.errors?.['required']">
@@ -49,8 +48,8 @@
 
                 <div class="form-group">
                     <label for="precio" class="form-label">Precio: </label>
-                    <input id="precio" type="number" class="form-control"
-                        [(ngModel)]="producto.precio" name="precio" required #precio="ngModel">
+                    <input id="precio" type="number" class="form-control" [(ngModel)]="producto.precio" name="precio"
+                        required #precio="ngModel">
 
                     <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
                         <div *ngIf="precio.errors?.['required']">
@@ -61,8 +60,8 @@
 
                 <div class="form-group">
                     <label for="stock" class="form-label">Stock: </label>
-                    <input id="stock" type="number" class="form-control" [(ngModel)]="producto.stock"
-                        name="stock" required #stock="ngModel">
+                    <input id="stock" type="number" class="form-control" [(ngModel)]="producto.stock" name="stock"
+                        required #stock="ngModel">
 
                     <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
                         <div *ngIf="stock.errors?.['required']">
@@ -94,8 +93,7 @@
                 <div class="form-group pt-5">
                     <button type="button" [disabled]="productoForm.invalid" (click)="guardarProducto()"
                         class="btn btn-success w-50">Agregar Producto</button>
-                    <button type="submit" (click)="volverLista()"
-                        class="btn btn-primary w-50">Volver Lista</button>
+                    <button type="submit" (click)="volverLista()" class="btn btn-primary w-50">Volver Lista</button>
 
                 </div>
             </form>
@@ -132,7 +130,7 @@
                 <div class="m-1">
                     <h5>Precio del Producto:</h5>
                     <div *ngIf="producto.precio; else sinPrecio">
-                        <p>&nbsp;&nbsp;$ {{producto.precio}} pesos</p>
+                        <p>&nbsp;&nbsp;{{producto.precio | currency:'ARS':'symbol-narrow'}}</p>
                     </div>
                     <ng-template #sinPrecio>
                         <p class="fs-6">&nbsp;&nbsp;$ 0 pesos</p>
@@ -141,7 +139,7 @@
                 <div class="m-1">
                     <h5>Productos diponible:</h5>
                     <div *ngIf="producto.stock; else sinStock">
-                        <p>&nbsp;&nbsp; {{producto.stock}} unidades</p>
+                        <p>&nbsp;&nbsp; {{producto.stock}} Unidades</p>
                     </div>
                     <ng-template #sinStock>
                         <p class="fs-6">&nbsp;&nbsp; 0 unidades</p>
