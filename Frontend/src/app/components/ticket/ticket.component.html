@@ -1,1 +1,56 @@
-<p>ticket works!</p>
+<div class="container">
+    <br>
+    <div class="row">
+        <h3 class="col-12 text-center text-info text-decoration-underline">Listado De Tickets</h3>
+    </div>
+    <br><br>
+    <div class="d-flex mb-3 justify-content-between-fill">
+        <form class="d-flex col-6">
+            <select class="form-select me-2" [(ngModel)]="filtrarCategoria" name="categoriaEspectador"
+                id="categoriaEspectador" placeholder="Ingrese un Categoria">
+                <option value="l">Local</option>
+                <option value="e">Extranjero</option>
+            </select>
+            <button type="button" class="btn btn-primary" [disabled]="!filtrarCategoria"
+                (click)="filtrarPorCategoria()">Filtrar</button>
+        </form>
+        <button type="button" class="btn btn-primary ms-auto col-2" [hidden]="filtrarCategoria==''"
+            (click)="limpiar()">Limpiar</button>
+    </div>
+    <br><br>
+    <button type="button" (click)="agregarTicket()" class="btn btn-info">Agregar Ticket</button>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table-striped border border-1">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Precio Ticket</th>
+                    <th scope="col">Categoria Espectador</th>
+                    <th scope="col">Fecha Compra</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Espectador</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tick of ticketss">
+                    <th scope="row">{{ tick._id }}</th>
+                    <td>{{ tick.precioTicket | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{ tick.categoriaEspectador}} </td>
+                    <td>{{ tick.fechaCompra | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ tick.email}}</td>
+                    <td>Apellido: {{ tick.espectador.apellido | titlecase}},
+                        Nombre: {{ tick.espectador.nombre | titlecase}}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="modificarTicket(tick)">Modificar</button>
+                        <button class="btn btn-danger" (click)="eliminarTicket(tick)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <button type="button" (click)="agregarTicket()" class="btn btn-info">Agregar Ticket</button>
+</div>
+<br>

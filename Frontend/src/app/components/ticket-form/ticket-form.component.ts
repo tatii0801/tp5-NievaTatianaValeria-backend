@@ -40,7 +40,7 @@ export class TicketFormComponent implements OnInit {
   cargarTicket(id: string) {
     this.ticketService.getTicket(id).subscribe(
       result => {
-        Object.assign(this.router, result);
+        Object.assign(this.ticket, result);
         //añadir los valores en una lista despleglable
         this.ticket.espectador = this.espectadoress.find(item => (item._id == this.ticket.espectador._id))!;
         console.log(result);
@@ -73,6 +73,7 @@ export class TicketFormComponent implements OnInit {
       (result: any) => {
         if (result.status == 1) {
           console.log(result.msg);
+          this.router.navigate(["ticket"]);
         }
       },
       error => {
@@ -80,7 +81,6 @@ export class TicketFormComponent implements OnInit {
       }
     )
   }
-
 
   actualizarTicket() {
     this.ticketService.editTicket(this.ticket).subscribe(

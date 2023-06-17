@@ -49,7 +49,7 @@ export class TicketService {
       }),
       params: new HttpParams()//.append("estado",true)
     }
-    return this._httpCliente.delete(this.urlBase + "ticket/filtro/" + categoria, httpOption);
+    return this._httpCliente.get(this.urlBase + "ticket/filtro/" + categoria, httpOption);
   }
 
   createTicket(ticket: Ticket): Observable<any> {
@@ -80,6 +80,6 @@ export class TicketService {
       email: ticket.email,
       espectador: ticket.espectador
     };
-    return this._httpCliente.put(this.urlBase + "ticket" + ticket._id, body, httpOptions);
+    return this._httpCliente.put(this.urlBase + "ticket/" + ticket._id, body, httpOptions);
   }
 }

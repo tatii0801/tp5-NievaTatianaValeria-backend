@@ -12,7 +12,8 @@ export class TransaccionComponent implements OnInit {
 
   transaccionss!: Array<Transaccion>;
   transaccion!: Transaccion;
-  filtra!:string;
+  monedaOrigenFiltrar!: string;
+  monedaDestinoFiltrar!: string;
 
   constructor(private transaccionService: TransaccionService,
     private router: Router) {
@@ -46,17 +47,21 @@ export class TransaccionComponent implements OnInit {
     )
   }
 
-//modificar no funciona bien 
-  filtrarXmonedas() {
-    this.transaccionService.getTransaccionesFiltroMonedas(this.transaccion.monedaOrigen,this.transaccion.monedaDestino).subscribe(
-      result => {
-        this.filtra=result;
-        console.log(result);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+  
+  //modificar no funciona bien 
+  filtrarPorMoneda() {
+    this.transaccionService.getTransaccionesFiltroMonedas(this.monedaOrigenFiltrar, this.monedaDestinoFiltrar).subscribe(
+      (res) => {
+        this.transaccionss, res;
+      });
+  }
 
+  limpiar() {
+    this.monedaOrigenFiltrar = '';
+    this.monedaDestinoFiltrar = '';
+    //recarga la pagina asi se actualiza el table
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['transaccion']);
   }
 }
