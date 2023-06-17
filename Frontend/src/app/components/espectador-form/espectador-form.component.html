@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <br>
-            <h3>Venta de Tickets</h3>
+            <h3>Espectador</h3>
 
             <!--<div>Datos en el formulario: {{ticketForm.value | json}}</div>
             <div>Estado del Fromulario:{{ticketForm.status}} {{ticketForm.invalid}}</div>
@@ -13,7 +13,7 @@
             <form #espectadorForm="ngForm">
                 <div class="mb-3">
                     <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control form-control-sm" id="apellido"
+                    <input type="text" class="form-control form-control-sm" id="apellido" placeholder="Ingrese Apellido"
                         [(ngModel)]="espectador.apellido" name="apellido" required #apellido="ngModel">
 
                     <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
@@ -26,7 +26,7 @@
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control form-control-sm" id="nombre"
+                    <input type="text" class="form-control form-control-sm" id="nombre" placeholder="Ingrese Nombre"
                         [(ngModel)]="espectador.nombre" name="nombre" required #nombre="ngModel">
 
                     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
@@ -38,21 +38,21 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Dni</label>
-                    <input type="text" class="form-control form-control-sm" id="dni"
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control form-control-sm" id="dni" placeholder="Ingrese DNI"
                         [(ngModel)]="espectador.dni" name="dni" required #dni="ngModel">
 
                     <div *ngIf="dni.invalid && (dni.dirty || dni.touched)"
                         class="alert alert-danger">
                         <div *ngIf="dni.errors?.['required']">
-                            Dni es requerido.
+                            DNI es requerido.
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control form-control-sm" id="email"
+                    <input type="email" class="form-control form-control-sm" id="email" placeholder="Ingrese Email"
                         [(ngModel)]="espectador.email" name="email" required #email="ngModel">
 
                     <div *ngIf="email.invalid && (email.dirty || email.touched)"

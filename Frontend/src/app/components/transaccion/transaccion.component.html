@@ -1,9 +1,48 @@
 <div class="container">
     <br>
     <div class="row">
-        <h3 class="col-12 text-center text-success text-decoration-underline">Listado De Productos Destacados</h3>
+        <h3 class="col-12 text-center text-danger text-decoration-underline">Listado De Transaccion</h3>
     </div>
-    <button type="button" (click)="agregarTransaccion()" class="btn btn-success">Agregar Transaccion</button>
+    <br><br>
+    <div class="d-flex mb-3 justify-content-between-fill">
+        <form class="d-flex col-6">
+            <select class="form-select me-2" [(ngModel)]="monedaOrigenFiltrar" id="monedaOrigen"
+                [(ngModel)]="transaccion.monedaOrigen" name="monedaOrigen" placeholder="Seleccione">
+                <option value="">Seleccione: </option>
+                <option value="USD">USD Dolares EEUU</option>
+                <option value="EUR">EUR Euro</option>
+                <option value="GBP">GBP Libra Esterlina</option>
+                <option value="RUB">RUB Rublo ruso</option>
+                <option value="JPY">JPY Yen</option>
+                <option value="CNY">CNY Yuan Renminbi</option>
+                <option value="AUD">AUD Dólar australiano</option>
+                <option value="BTC">BTC Bitcoin</option>
+                <option value="ARS">ARS Peso argentino</option>
+            </select>
+
+            <select class="form-select me-2" [(ngModel)]="monedaDestinoFiltrar" id="monedaDestino"
+                [(ngModel)]="transaccion.monedaDestino" name="monedaDestino" placeholder="Seleccione">
+                <option value="">Seleccione: </option>
+                <option value="USD">USD Dolares EEUU</option>
+                <option value="EUR">EUR Euro</option>
+                <option value="GBP">GBP Libra Esterlina</option>
+                <option value="RUB">RUB Rublo ruso</option>
+                <option value="JPY">JPY Yen</option>
+                <option value="CNY">CNY Yuan Renminbi</option>
+                <option value="AUD">AUD Dólar australiano</option>
+                <option value="BTC">BTC Bitcoin</option>
+                <option value="ARS">ARS Peso argentino</option>
+            </select>
+
+            <button type="button" class="btn btn-primary" [disabled]="!monedaOrigenFiltrar || !monedaDestinoFiltrar"
+                (click)="filtrarPorMoneda()">Filtrar</button>
+
+        </form>
+        <button type="button" class="btn btn-primary ms-auto col-2"
+            [hidden]="monedaOrigenFiltrar=='' || monedaDestinoFiltrar==''" (click)="limpiar()">Limpiar</button>
+    </div>
+    <br><br>
+    <button type="button" (click)="agregarTransaccion()" class="btn btn-danger text-white">Agregar Transaccion</button>
     <br><br>
     <div class="table-responsive">
         <table class="table table table-bordered table-light table-striped">
@@ -34,6 +73,6 @@
             </tbody>
         </table>
     </div>
-    <button type="button" (click)="agregarTransaccion()" class="btn btn-success">Agregar Transaccion</button>
+    <button type="button" (click)="agregarTransaccion()" class="btn btn-danger text-white">Agregar Transaccion</button>
 </div>
 <br>
