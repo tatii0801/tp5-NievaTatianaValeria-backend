@@ -15,6 +15,8 @@ export class TicketFormComponent implements OnInit {
   ticket!: Ticket;
   accion: string = "new" // accion tendra los valores de new o update
   espectadoress!: Array<Espectador>;
+  precioCobrado!: number;
+  opcionSeleccionada!: string;
 
   constructor(private ticketService: TicketService,
     private espectadorService: EspectadorService,
@@ -22,7 +24,8 @@ export class TicketFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
     this.ticket = new Ticket();
     this.espectadoress = new Array<Espectador>();
-
+    const fecha = new Date();
+    this.ticket.fechaCompra = fecha.toLocaleDateString();
   }
 
   ngOnInit(): void {
@@ -98,5 +101,13 @@ export class TicketFormComponent implements OnInit {
 
   volverLista() {
     this.router.navigate(["ticket"]);
+  }
+
+  calcularDescuanto() {
+    this.precioCobrado = this.ticket.precioTicket
+    if (this.ticket.categoriaEspectador == 'l')
+      this.precioCobrado = this.ticket.precioTicket - (this.ticket.precioTicket * 0.20);
+    return true;
+
   }
 }

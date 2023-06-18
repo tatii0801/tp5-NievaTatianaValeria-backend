@@ -11,7 +11,7 @@
             <form class="p-3" #productoForm="ngForm">
                 <div class="form-group">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input id="nombre" type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre"
+                    <input id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre" [(ngModel)]="producto.nombre" name="nombre"
                         required #nombre="ngModel">
 
                     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label for="descripcion" class="form-label">Descripcion:</label>
-                    <textarea id="descripcion" type="text" class="form-control" [(ngModel)]="producto.descripcion"
+                    <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion" [(ngModel)]="producto.descripcion"
                         name="descripcion" required #descripcion="ngModel"></textarea>
 
                     <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
@@ -36,19 +36,19 @@
 
                 <div class="form-group">
                     <label for="imagen" class="form-label">Imagen Url:</label>
-                    <input id="imagen" type="text" class="form-control" [(ngModel)]="producto.imagen" name="imagen"
+                    <input id="imagen" type="text" class="form-control" placeholder="Ingrese URL de Imagen" [(ngModel)]="producto.imagen" name="imagen"
                         required #imagen="ngModel">
 
                     <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alert alert-danger">
                         <div *ngIf="imagen.errors?.['required']">
-                            Imagen es requerido.
+                            Url de Imagen es requerido.
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="precio" class="form-label">Precio: </label>
-                    <input id="precio" type="number" class="form-control" [(ngModel)]="producto.precio" name="precio"
+                    <input id="precio" type="number" class="form-control" placeholder="Ingrese Precio" [(ngModel)]="producto.precio" name="precio"
                         required #precio="ngModel">
 
                     <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
@@ -60,7 +60,7 @@
 
                 <div class="form-group">
                     <label for="stock" class="form-label">Stock: </label>
-                    <input id="stock" type="number" class="form-control" [(ngModel)]="producto.stock" name="stock"
+                    <input id="stock" type="number" class="form-control" placeholder="Ingrese Stock" [(ngModel)]="producto.stock" name="stock"
                         required #stock="ngModel">
 
                     <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">

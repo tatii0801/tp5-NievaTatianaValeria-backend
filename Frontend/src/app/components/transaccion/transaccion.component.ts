@@ -47,12 +47,13 @@ export class TransaccionComponent implements OnInit {
     )
   }
 
-  
   //modificar no funciona bien 
   filtrarPorMoneda() {
     this.transaccionService.getTransaccionesFiltroMonedas(this.monedaOrigenFiltrar, this.monedaDestinoFiltrar).subscribe(
-      (res) => {
-        this.transaccionss, res;
+      (result: Array<Transaccion>) => {
+        this.transaccionss = [];
+        Object.assign(this.transaccionss, result);
+        //console.log(result.msg);
       });
   }
 
@@ -60,8 +61,8 @@ export class TransaccionComponent implements OnInit {
     this.monedaOrigenFiltrar = '';
     this.monedaDestinoFiltrar = '';
     //recarga la pagina asi se actualiza el table
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['transaccion']);
+    //this.cargarTickets();
+    window.location.reload();
   }
 }
