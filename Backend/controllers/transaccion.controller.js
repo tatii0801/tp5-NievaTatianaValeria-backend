@@ -44,11 +44,11 @@ transaccionCtrl.getTransaccionesFiltroEmail = async (req, res) => {
 
 transaccionCtrl.getTransaccionesFiltroMonedas = async (req, res) => {
     try {
-        const monedaOrigen = req.params.monOri,
-        monedaDestino = req.params.monDes;
+        const monedaOrigen = req.params.monedaOrigen,
+        monedaDestino = req.params.monedaDestino;
 
-        var transacciones = await Transaccion.find({ 'monedaOrigen': monedaOrigen});
-        transacciones = await Transaccion.find({ 'monedaDestino': monedaDestino })
+        var transacciones = await Transaccion.find({ monedaOrigen: monedaOrigen});
+        transacciones = await Transaccion.find({ monedaDestino: monedaDestino })
         res.json(transacciones);
 
     } catch (error) {

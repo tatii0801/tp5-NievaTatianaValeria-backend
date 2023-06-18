@@ -15,7 +15,7 @@ export class TicketComponent implements OnInit {
 
   constructor(private ticketService: TicketService,
     private router: Router) {
-   // this.ticket = new Ticket();
+    // this.ticket = new Ticket();
     this.ticketss = new Array<Ticket>();
     this.cargarTickets();
   }
@@ -52,6 +52,7 @@ export class TicketComponent implements OnInit {
           console.log(result.msg);
           this.router.navigate(['ticket']);
           this.cargarTickets();
+          window.location.reload();
         }
       },
       error => {
@@ -69,17 +70,18 @@ export class TicketComponent implements OnInit {
 
   filtrarPorCategoria() {
     this.ticketService.getEspectadorXcategoria(this.filtrarCategoria).subscribe(
-      (res: Array<Ticket>) => {
+      (result: Array<Ticket>) => {
         this.ticketss = [];
-        Object.assign(this.ticketss, res);
+        Object.assign(this.ticketss, result);
+        //console.log(result.msg);
       });
   }
 
   limpiar() {
     this.filtrarCategoria = '';
     //recarga la pagina asi se actualiza el table
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['ticket']);
+    //this.cargarTickets();
+    window.location.reload();
   }
 }

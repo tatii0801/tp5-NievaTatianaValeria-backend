@@ -54,7 +54,8 @@
                     <label for="categoriaEspectador" class="form-label">Tipo de Espectador</label>
                     <select class="form-select" aria-label="Default select example"
                         [(ngModel)]="ticket.categoriaEspectador" name="categoriaEspectador" required
-                        #categoriaEspectador="ngModel"> <!--(ngModelChange)="calcularDescuanto()"-->
+                        #categoriaEspectador="ngModel" (ngModelChange)="calcularDescuanto()">
+                        
                         <option value="">Seleccione que categoria requiere</option>
                         <option value="l">Local</option>
                         <option value="e">Extranjero</option>
@@ -88,10 +89,11 @@
 
                 <div class="caja mb-3" *ngIf="ticket.precioTicket && ticket.categoriaEspectador" required>
                     <label for="precioCobrado" class="form-label">Precio Cobrado: </label>
-                </div>
+                        {{precioCobrado}}
+                    </div>
 
-                <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-primary"
-                    [disabled]="ticketForm.invalid">Registrar</button>
+                <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
+                    [disabled]="ticketForm.invalid">Registrar Ticket</button>
                 <button *ngIf="accion=='update'" type="submit" (click)="actualizarTicket()"
                     class="btn btn-warning">Actualizar</button>
                 <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>

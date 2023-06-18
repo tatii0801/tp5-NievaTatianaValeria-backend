@@ -38,7 +38,7 @@
                     <th scope="row">{{ tick._id }}</th>
                     <td>{{ tick.precioTicket | currency:'ARS':'symbol-narrow'}}</td>
                     <td>{{ tick.categoriaEspectador}} </td>
-                    <td>{{ tick.fechaCompra | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ tick.fechaCompra}}</td>
                     <td>{{ tick.email}}</td>
                     <td>Apellido: {{ tick.espectador.apellido | titlecase}},
                         Nombre: {{ tick.espectador.nombre | titlecase}}</td>
@@ -50,7 +50,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <button type="button" (click)="agregarTicket()" class="btn btn-info">Agregar Ticket</button>
 </div>
 <br>

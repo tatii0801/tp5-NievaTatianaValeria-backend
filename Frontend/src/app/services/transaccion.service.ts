@@ -45,16 +45,15 @@ export class TransaccionService {
   }
 
   getTransaccionesFiltroMonedas(monedaOrigen: string, monedaDestino: string): Observable<any> {
-    const httpOptions = {
-
+    let httpOption = {
       headers: new HttpHeaders({
 
       }),
-      params: new HttpParams()
-        .append('monedaOrigen', monedaOrigen)
-        .append('monedaDestino', monedaDestino),
-    };
-    return this._httpCliente.get(this.urlBase + 'transaccion/filtro/' + monedaOrigen + '/' + monedaDestino, httpOptions);
+      params: new HttpParams()//.append("estado",true)
+      .set('monedaOrigen', monedaOrigen)
+      .set('monedaDestino', monedaDestino),
+    }
+    return this._httpCliente.get(this.urlBase + "transaccion/filtro/" + monedaOrigen + '/' + monedaDestino, httpOption);
   }
 
   conversionDivisa(monedaOrigen: string, monedaDestino: string, cantidad: number): Observable<any> {
