@@ -1,23 +1,25 @@
-<div class="container">
+<div class="container" style="background-color: #a6fab6">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <br>
-            <h3>Espectador</h3>
-
+            <div class="letra3">
+                <h3>Espectador</h3>
+                <br>
+            </div>
             <!--<div>Datos en el formulario: {{ticketForm.value | json}}</div>
             <div>Estado del Fromulario:{{ticketForm.status}} {{ticketForm.invalid}}</div>
 
             <div>Estado de la caja de dni: {{dni.status}}</div>
             <div>Errores en la caja dni: {{dni.errors | json}}</div>-->
+            <button type="submit" (click)="volverLista()" class="btn btn-primary">Volver Lista</button>
 
-            <form #espectadorForm="ngForm">
+            <form class="p-3" #espectadorForm="ngForm">
                 <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellido</label>
+                    <label for="apellido" class="form-label" style="font-weight: bold;">Apellido</label>
                     <input type="text" class="form-control form-control-sm" id="apellido" placeholder="Ingrese Apellido"
                         [(ngModel)]="espectador.apellido" name="apellido" required #apellido="ngModel">
 
-                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
-                        class="alert alert-danger">
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
                         <div *ngIf="apellido.errors?.['required']">
                             Apellido es requerido.
                         </div>
@@ -25,25 +27,23 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
+                    <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
                     <input type="text" class="form-control form-control-sm" id="nombre" placeholder="Ingrese Nombre"
                         [(ngModel)]="espectador.nombre" name="nombre" required #nombre="ngModel">
 
-                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
-                        class="alert alert-danger">
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
                         <div *ngIf="nombre.errors?.['required']">
                             Nombre es requerido.
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mb-3">
-                    <label for="dni" class="form-label">DNI</label>
+                    <label for="dni" class="form-label" style="font-weight: bold;">DNI</label>
                     <input type="text" class="form-control form-control-sm" id="dni" placeholder="Ingrese DNI"
                         [(ngModel)]="espectador.dni" name="dni" required #dni="ngModel">
 
-                    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)"
-                        class="alert alert-danger">
+                    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="alert alert-danger">
                         <div *ngIf="dni.errors?.['required']">
                             DNI es requerido.
                         </div>
@@ -51,12 +51,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label" style="font-weight: bold;">Email</label>
                     <input type="email" class="form-control form-control-sm" id="email" placeholder="Ingrese Email"
                         [(ngModel)]="espectador.email" name="email" required #email="ngModel">
 
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                        class="alert alert-danger">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                         <div *ngIf="email.errors?.['required']">
                             Email es requerido.
                         </div>
@@ -65,12 +64,11 @@
 
                 <br>
 
-                <button type="submit" (click)="guardarEspectador()" class="btn btn-warning"
+                <button type="submit" (click)="guardarEspectador()" class="btn btn-primary"
                     [disabled]="espectadorForm.invalid">Registrar Espectador</button>
-                <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
-                <br><br><br><br>
+                <button type="submit" (click)="volverLista()" class="btn btn-danger">Volver Lista</button>
+                <br><br>
             </form>
         </div>
     </div>
 </div>
-<br>

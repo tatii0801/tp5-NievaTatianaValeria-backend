@@ -1,10 +1,13 @@
 .card {
     /* articulos */
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
 }
 
 img {
     width: 100%;
+}
 
+h3{
+    font-style: italic;
 }

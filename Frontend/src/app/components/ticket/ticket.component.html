@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="background-color: #f6d1de">
     <br>
     <div class="row">
-        <h3 class="col-12 text-center text-info text-decoration-underline">Listado De Tickets</h3>
+        <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Tickets</h3>
     </div>
     <br><br>
     <div class="d-flex mb-3 justify-content-between-fill">
@@ -11,17 +11,17 @@
                 <option value="l">Local</option>
                 <option value="e">Extranjero</option>
             </select>
-            <button type="button" class="btn btn-primary" [disabled]="!filtrarCategoria"
+            <button type="button" class="btn btn-info ms-auto col-2" [disabled]="!filtrarCategoria"
                 (click)="filtrarPorCategoria()">Filtrar</button>
         </form>
-        <button type="button" class="btn btn-primary ms-auto col-2" [hidden]="filtrarCategoria==''"
+        <button type="button" class="btn btn-info ms-auto" [hidden]="filtrarCategoria==''"
             (click)="limpiar()">Limpiar</button>
     </div>
     <br><br>
     <button type="button" (click)="agregarTicket()" class="btn btn-info">Agregar Ticket</button>
     <br><br>
     <div class="table-responsive">
-        <table class="table table-striped border border-1">
+        <table class="table table table-bordered table-light table-striped">
             <thead>
                 <tr class="text-center">
                     <th scope="col">ID</th>
@@ -52,5 +52,5 @@
     </div>
 
     <button type="button" (click)="agregarTicket()" class="btn btn-info">Agregar Ticket</button>
+    <br><br>
 </div>
-<br>
