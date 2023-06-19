@@ -5,11 +5,16 @@
 }
 
 .letra3 h3 {
-	background-color: #0f228d;
+	background-color: #11641f;
 	font-family: Arial Rounded MT Bold, serif, sans-serif;
 	padding: 1rem;
 	text-align: center;
 	font-weight: bold;
-	display: 7;
+	/*display: 6;*/
 	color: white;
+}
+
+label{
+	font-style: italic;
+	font-size: large;
 }

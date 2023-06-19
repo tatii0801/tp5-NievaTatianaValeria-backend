@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container" style="background-color: #f6d1de">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <br>
-            <h3>Venta de Tickets</h3>
+            <div class="letra3">
+                <h3>Venta de Tickets</h3>
+                <br>
+            </div>
+            <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
 
             <!--<div>Datos en el formulario: {{ticketForm.value | json}}</div>
             <div>Estado del Fromulario:{{ticketForm.status}} {{ticketForm.invalid}}</div>
@@ -10,11 +14,12 @@
             <div>Estado de la caja de dni: {{dni.status}}</div>
             <div>Errores en la caja dni: {{dni.errors | json}}</div>-->
 
-            <form #ticketForm="ngForm">
+            <form class="p-3" #ticketForm="ngForm">
                 <div class="mb-3">
-                    <label for="precioTicket" class="form-label">Precio Ticket</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese Precio Ticket" id="precioTicket"
-                        [(ngModel)]="ticket.precioTicket" name="precioTicket" required #precioTicket="ngModel">
+                    <label for="precioTicket" class="form-label" style="font-weight: bold;">Precio Ticket</label>
+                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese Precio Ticket"
+                        id="precioTicket" [(ngModel)]="ticket.precioTicket" name="precioTicket" required
+                        #precioTicket="ngModel">
 
                     <div *ngIf="precioTicket.invalid && (precioTicket.dirty || precioTicket.touched)"
                         class="alert alert-danger">
@@ -24,8 +29,8 @@
                     </div>
                 </div>
 
-              <div class="mb-3">
-                    <label for="fechaCompra" class="form-label">Fecha Compra</label>
+                <div class="mb-3">
+                    <label for="fechaCompra" class="form-label" style="font-weight: bold;">Fecha Compra</label>
                     <input type="text" class="form-control form-control-sm" placeholder="Ingrese Fecha" id="fechaCompra"
                         [(ngModel)]="ticket.fechaCompra" name="fechaCompra" required #fechaCompra="ngModel">
 
@@ -38,12 +43,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label" style="font-weight: bold;">Email</label>
                     <input type="email" class="form-control form-control-sm" placeholder="Ingrese Email" id="email"
                         [(ngModel)]="ticket.email" name="email" required #email="ngModel">
 
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                        class="alert alert-danger">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                         <div *ngIf="email.errors?.['required']">
                             Email es requerido.
                         </div>
@@ -51,12 +55,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="categoriaEspectador" class="form-label">Tipo de Espectador</label>
-                    <select class="form-select" aria-label="Default select example"
+                    <label for="categoriaEspectador" class="form-label" style="font-weight: bold;">Tipo de
+                        Espectador</label>
+                    <select v-model="selected" class="form-select" aria-label="Default select example"
                         [(ngModel)]="ticket.categoriaEspectador" name="categoriaEspectador" required
                         #categoriaEspectador="ngModel" (ngModelChange)="calcularDescuanto()">
-                        
-                        <option value="">Seleccione que categoria requiere</option>
+
+                        <option disabled value="">Seleccione que categoria requiere</option>
                         <option value="l">Local</option>
                         <option value="e">Extranjero</option>
                     </select>
@@ -70,10 +75,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="espectador" class="form-label">Espectador</label>
+                    <label for="espectador" class="form-label" style="font-weight: bold;">Espectador</label>
                     <select class="form-select" aria-label="Default select example" placeholder="Ingrese un Espectador"
-                        [(ngModel)]="ticket.espectador" name="espectador" required
-                        #espectador="ngModel">
+                        [(ngModel)]="ticket.espectador" name="espectador" required #espectador="ngModel">
 
                         <option *ngFor="let espectador of espectadoress" [ngValue]="espectador">{{espectador.nombre}},
                             {{espectador.apellido}}
@@ -88,18 +92,17 @@
                 </div>
 
                 <div class="caja mb-3" *ngIf="ticket.precioTicket && ticket.categoriaEspectador" required>
-                    <label for="precioCobrado" class="form-label">Precio Cobrado: </label>
-                        {{precioCobrado}}
-                    </div>
+                    <label for="precioCobrado" class="form-label" style="font-weight: bold;">Precio Cobrado: </label>
+                    {{precioCobrado}}
+                </div>
 
                 <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
                     [disabled]="ticketForm.invalid">Registrar Ticket</button>
                 <button *ngIf="accion=='update'" type="submit" (click)="actualizarTicket()"
                     class="btn btn-warning">Actualizar</button>
                 <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
-                <br><br><br><br>
+                <br><br>
             </form>
         </div>
     </div>
 </div>
-<br>

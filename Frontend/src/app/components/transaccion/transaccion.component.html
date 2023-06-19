@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" style="background-color: #2c45d463">
     <br>
     <div class="row">
-        <h3 class="col-12 text-center text-danger text-decoration-underline">Listado De Transaccion</h3>
+        <h3 class="col-12 text-center text-danger text-decoration-underline" style="font-weight: bold;">Listado De
+            Transaccion</h3>
     </div>
     <br><br>
     <div class="d-flex mb-3 justify-content-between-fill">
@@ -34,11 +35,11 @@
                 <option value="ARS">ARS Peso argentino</option>
             </select>
 
-            <button type="button" class="btn btn-primary" [disabled]="!monedaOrigenFiltrar || !monedaDestinoFiltrar"
-                (click)="filtrarPorMoneda()">Filtrar</button>
+            <button type="button" class="btn btn-danger text-white ms-auto col-2"
+                [disabled]="!monedaOrigenFiltrar || !monedaDestinoFiltrar" (click)="filtrarPorMoneda()">Filtrar</button>
 
         </form>
-        <button type="button" class="btn btn-primary ms-auto col-2"
+        <button type="button" class="btn btn-danger text-white ms-auto"
             [hidden]="monedaOrigenFiltrar=='' || monedaDestinoFiltrar==''" (click)="limpiar()">Limpiar</button>
     </div>
     <br><br>
@@ -67,12 +68,13 @@
                     <td>{{ div.cantidadDestino | currency:'ARS':'symbol-narrow'}} </td>
                     <td>{{ div.emailCliente}}</td>
                     <td>{{ div.tasaConversion | percent}} </td>
-                    <td>{{ div.cantidadOrigen}}{{ div.monedaOrigen | uppercase}} = {{ div.tasaConversion}}{{
+                    <td>{{ div.cantidadOrigen | currency:'ARS':'symbol-narrow'}}{{ div.monedaOrigen | uppercase}} = {{
+                        div.tasaConversion | currency:'ARS':'symbol-narrow'}}{{
                         div.monedaDestino | uppercase}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <button type="button" (click)="agregarTransaccion()" class="btn btn-danger text-white">Agregar Transaccion</button>
+    <br><br>
 </div>
-<br>

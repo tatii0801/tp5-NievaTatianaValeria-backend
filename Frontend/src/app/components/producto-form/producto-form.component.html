@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="background-color: #ff680481">
     <br>
     <div class="d-flex flex-lg-row flex-column-reverse">
         <div class="col-lg-6 col-12 form">
@@ -10,7 +10,7 @@
 
             <form class="p-3" #productoForm="ngForm">
                 <div class="form-group">
-                    <label for="nombre" class="form-label">Nombre:</label>
+                    <label for="nombre" class="form-label" style="font-weight: bold;">Nombre:</label>
                     <input id="nombre" type="text" class="form-control" placeholder="Ingrese Nombre" [(ngModel)]="producto.nombre" name="nombre"
                         required #nombre="ngModel">
 
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="descripcion" class="form-label">Descripcion:</label>
+                    <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
                     <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion" [(ngModel)]="producto.descripcion"
                         name="descripcion" required #descripcion="ngModel"></textarea>
 
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="imagen" class="form-label">Imagen Url:</label>
+                    <label for="imagen" class="form-label" style="font-weight: bold;">Imagen Url:</label>
                     <input id="imagen" type="text" class="form-control" placeholder="Ingrese URL de Imagen" [(ngModel)]="producto.imagen" name="imagen"
                         required #imagen="ngModel">
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="precio" class="form-label">Precio: </label>
+                    <label for="precio" class="form-label" style="font-weight: bold;">Precio: </label>
                     <input id="precio" type="number" class="form-control" placeholder="Ingrese Precio" [(ngModel)]="producto.precio" name="precio"
                         required #precio="ngModel">
 
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="stock" class="form-label">Stock: </label>
+                    <label for="stock" class="form-label" style="font-weight: bold;">Stock: </label>
                     <input id="stock" type="number" class="form-control" placeholder="Ingrese Stock" [(ngModel)]="producto.stock" name="stock"
                         required #stock="ngModel">
 
@@ -72,7 +72,7 @@
 
                 <!--Destacado-->
                 <div class="mb-3">
-                    <label for="destacado" class="form-label">Tipo: </label>
+                    <label for="destacado" class="form-label" style="font-weight: bold;">Tipo: </label>
                     <div class="form-check">
                         <label class="form-check-label" for="destacado">Destacado</label>
                         <input id="destacado" type="radio" class="form-check-input" [(ngModel)]="producto.destacado"
