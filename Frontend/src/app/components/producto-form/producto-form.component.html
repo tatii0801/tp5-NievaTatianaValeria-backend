@@ -1,4 +1,4 @@
-<div class="container" style="background-color: #ff680481">
+<div class="container" style="background-color: #ff680459">
     <br>
     <div class="d-flex flex-lg-row flex-column-reverse">
         <div class="col-lg-6 col-12 form">
@@ -121,32 +121,32 @@
                 <div class="m-1">
                     <h5>Descripcion:</h5>
                     <div *ngIf="producto.descripcion; else sinDescripcion">
-                        <p>&nbsp;&nbsp;{{producto.descripcion}}</p>
+                        <p>{{producto.descripcion}}</p>
                     </div>
                     <ng-template #sinDescripcion>
-                        <p>&nbsp;&nbsp; Descripcion del Producto</p>
+                        <p>Descripcion del Producto</p>
                     </ng-template>
                 </div>
                 <div class="m-1">
                     <h5>Precio del Producto:</h5>
                     <div *ngIf="producto.precio; else sinPrecio">
-                        <p>&nbsp;&nbsp;{{producto.precio | currency:'ARS':'symbol-narrow'}}</p>
+                        <p>{{producto.precio | currency:'ARS':'symbol-narrow'}}</p>
                     </div>
                     <ng-template #sinPrecio>
-                        <p class="fs-6">&nbsp;&nbsp;$ 0 pesos</p>
+                        <p>$ 0 pesos</p>
                     </ng-template>
                 </div>
                 <div class="m-1">
                     <h5>Productos diponible:</h5>
                     <div *ngIf="producto.stock; else sinStock">
-                        <p>&nbsp;&nbsp; {{producto.stock}} Unidades</p>
+                        <p>{{producto.stock}} Unidades</p>
                     </div>
                     <ng-template #sinStock>
-                        <p class="fs-6">&nbsp;&nbsp; 0 unidades</p>
+                        <p> 0 unidades</p>
                     </ng-template>
                 </div>
             </div>
         </div>
     </div>
+    <br>
 </div>
-<br>

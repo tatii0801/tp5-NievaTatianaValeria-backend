@@ -63,14 +63,13 @@
                 <tr *ngFor="let div of transaccionss">
                     <th scope="row">{{ div._id }}</th>
                     <td>{{ div.monedaOrigen | uppercase}}</td>
-                    <td>{{ div.cantidadOrigen | currency:'ARS':'symbol-narrow'}} </td>
+                    <td>{{ div.cantidadOrigen | currency:'USD':'symbol': '1.2-6'}} </td>
                     <td>{{ div.monedaDestino | uppercase}}</td>
-                    <td>{{ div.cantidadDestino | currency:'ARS':'symbol-narrow'}} </td>
+                    <td>{{ div.cantidadDestino | currency:'USD':'symbol':'1.2-6'}} </td>
                     <td>{{ div.emailCliente}}</td>
                     <td>{{ div.tasaConversion | percent}} </td>
-                    <td>{{ div.cantidadOrigen | currency:'ARS':'symbol-narrow'}}{{ div.monedaOrigen | uppercase}} = {{
-                        div.tasaConversion | currency:'ARS':'symbol-narrow'}}{{
-                        div.monedaDestino | uppercase}}</td>
+                    <td>{{ div.cantidadOrigen | currency:'USD':'symbol':'1.2-6'}} {{ div.monedaOrigen | uppercase}} =
+                        {{div.tasaConversion | currency:'USD':'symbol':'1.2-6'}} {{div.monedaDestino | uppercase}}</td>
                 </tr>
             </tbody>
         </table>
