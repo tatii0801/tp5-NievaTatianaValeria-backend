@@ -47,14 +47,18 @@ export class TransaccionComponent implements OnInit {
     )
   }
 
-  //modificar no funciona bien 
+  //el filtro por modena funciona perfecto 
   filtrarPorMoneda() {
     this.transaccionService.getTransaccionesFiltroMonedas(this.monedaOrigenFiltrar, this.monedaDestinoFiltrar).subscribe(
-      (result: Array<Transaccion>) => {
+      result => {
         this.transaccionss = [];
         Object.assign(this.transaccionss, result);
-        //console.log(result.msg);
-      });
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   limpiar() {

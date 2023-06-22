@@ -140,7 +140,7 @@ export class TransaccionFormComponent implements OnInit {
         console.log(result);
       },
       error => {
-
+        console.log(error);
       }
     )
   }
@@ -155,7 +155,7 @@ export class TransaccionFormComponent implements OnInit {
         console.log(error);
       }
     )
-
+    // en este codigo en donde realizo la equivalencia de cantidad de origen y cantidad destino
     this.transaccionService.conversionDivisa(this.transaccion.monedaOrigen, this.transaccion.monedaDestino, this.transaccion.cantidadOrigen).subscribe(
       result => {
         this.transaccion.tasaConversion = result.result;
