@@ -68,13 +68,18 @@ export class TicketComponent implements OnInit {
     this.router.navigate(['ticket-form', 0])
   }
 
+  //el filtro por categoria funciona perfecto 
   filtrarPorCategoria() {
     this.ticketService.getEspectadorXcategoria(this.filtrarCategoria).subscribe(
-      (result: Array<Ticket>) => {
+      result => {
         this.ticketss = [];
         Object.assign(this.ticketss, result);
-        //console.log(result.msg);
-      });
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   limpiar() {
@@ -82,6 +87,8 @@ export class TicketComponent implements OnInit {
     //recarga la pagina asi se actualiza el table
     this.router.navigate(['ticket']);
     //this.cargarTickets();
+
+    //recarga la pagina
     window.location.reload();
   }
 }
