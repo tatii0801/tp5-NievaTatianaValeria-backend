@@ -50,8 +50,8 @@ export class TransaccionService {
 
       }),
       params: new HttpParams()//.append("estado",true)
-      .set('monedaOrigen', monedaOrigen)
-      .set('monedaDestino', monedaDestino),
+        .set('monedaOrigen', monedaOrigen)
+        .set('monedaDestino', monedaDestino),
     }
     return this._httpCliente.get(this.urlBase + "transaccion/filtro/" + monedaOrigen + '/' + monedaDestino, httpOption);
   }
@@ -61,7 +61,7 @@ export class TransaccionService {
       headers: new HttpHeaders({
         //api https://rapidapi.com/neutrinoapi/api/convert-1
         'content-type': 'application/x-www-form-urlencoded',
-        //'X-RapidAPI-Key': 'ec9f588861msh2fbfbc830040261p184312jsn132ded6cedc9',
+        //'X-RapidAPI-Key': 'a8677b95eamshec9fdb7406c63e4p1a7fbdjsn84146c1c757b',
         'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com'
       }),
     }
